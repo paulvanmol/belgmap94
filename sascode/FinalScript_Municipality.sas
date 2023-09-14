@@ -7,7 +7,8 @@
 %let REGION_ISO=924;
 %let PROVINCE_LABEL=Custom Municipality;
 %let PROVINCE_DATASET=MAPSCSTM.CUSTOM_MUN1;
-
+%let shapeversion=AdminVector_2019_WGS84_shp;
+%let shapeversion=AdminVector_2015_WGS84_shp;
 
 
 
@@ -23,7 +24,7 @@ where ID ? "&REGION_PREFIX";
 quit;
 
 /* import SHAPE file to SAS dataset */
-PROC MAPIMPORT 	DATAFILE="&path/shape/AD_2_Municipality.shp"
+PROC MAPIMPORT 	DATAFILE="&path/shape/&shapeversion/AD_2_Municipality.shp"
 				OUT=MAPSCSTM.MunicipalityMap;
 				ID NISCODE;
 RUN;

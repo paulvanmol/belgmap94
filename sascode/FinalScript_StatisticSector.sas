@@ -7,7 +7,8 @@ GOPTIONS ACCESSIBLE;
 %let REGION_ISO=926;
 %let PROVINCE_LABEL=Custom Statistic Sector;
 %let PROVINCE_DATASET=MAPSCSTM.CUSTOM_STA1;
-
+%let shapeversion=AdminVector_2019_WGS84_shp;
+%let shapeversion=AdminVector_2015_WGS84_shp;
 
 
 
@@ -24,7 +25,7 @@ where ID ? "&REGION_PREFIX";
 quit;
 
 /* import SHAPE file to SAS dataset */
-PROC MAPIMPORT 	DATAFILE="&path/shape/AD_0_StatisticSector.shp"
+PROC MAPIMPORT 	DATAFILE="&path/shape/&shapeversion/AD_0_StatisticSector.shp"
 				OUT=MAPSCSTM.StatisticSector contents;
 				ID NISCODE;
 RUN;

@@ -1,7 +1,9 @@
-libname valib "c:/sas/config/Lev1/SASApp/Data/valib";
-libname MAPSCSTM "d:/workshop/belgmap/sasdata";
+libname valib "&configdir/SASApp/Data/valib";
+libname MAPSCSTM "&path/sasdata";
 
-/*
+/*Uncomment to copy backup datasets first*/
+%if %sysfunc(exist(valib.attrlookup_backup)) NE 1 %THEN 
+%DO; 
 data valib.attrlookup_backup;
 	set valib.attrlookup;
 run;
@@ -9,7 +11,8 @@ run;
 data valib.centlookup_backup;
 	set valib.centlookup;
 run;
-*/
+%END; 
+
 data valib.attrlookup;
 	set valib.attrlookup_backup;
 run;

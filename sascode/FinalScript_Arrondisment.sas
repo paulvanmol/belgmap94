@@ -7,8 +7,8 @@
 %let REGION_ISO=923;
 %let PROVINCE_LABEL=Custom Arrondisement;
 %let PROVINCE_DATASET=MAPSCSTM.CUSTOM_ARR1;
-
-
+%let shapeversion=AdminVector_2019_WGS84_shp;
+%let shapeversion=AdminVector_2015_WGS84_shp;
 /*Load Custom Regions*/
 
 /* create libraries */
@@ -22,7 +22,7 @@ where ID ? "&REGION_PREFIX";
 quit;
 
 /* import SHAPE file to SAS dataset */
-PROC MAPIMPORT 	DATAFILE="&path/shape/AD_3_District.shp"
+PROC MAPIMPORT 	DATAFILE="&path/shape/&shapeversion/AD_3_District.shp"
 				OUT=MAPSCSTM.ArrondisementMap;
 				ID NISCODE;
 RUN;

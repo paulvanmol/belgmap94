@@ -6,7 +6,8 @@
 %let REGION_ISO=921;
 %let PROVINCE_LABEL=Custom Region;
 %let PROVINCE_DATASET=MAPSCSTM.CUSTOM_REG1;
-
+%let shapeversion=AdminVector_2019_WGS84_shp;
+%let shapeversion=AdminVector_2015_WGS84_shp;
 /*Load Custom Regions*/
 
 /* create libraries */
@@ -20,7 +21,7 @@ where ID ? "&REGION_PREFIX";
 quit;
 
 /* import SHAPE file to SAS dataset */
-PROC MAPIMPORT 	DATAFILE="&path/shape/AD_5_Region.shp"
+PROC MAPIMPORT 	DATAFILE="&path/shape/&shapeversion/AD_5_Region.shp"
 				OUT=MAPSCSTM.RegionMap;
 				ID NISCODE;
 RUN;

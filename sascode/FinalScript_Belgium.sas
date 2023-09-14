@@ -6,7 +6,8 @@ GOPTIONS ACCESSIBLE;
 %let REGION_ISO=920;
 %let PROVINCE_LABEL=Custom Country;
 %let PROVINCE_DATASET=MAPSCSTM.CUSTOM_BEL1;
-
+%let shapeversion=AdminVector_2019_WGS84_shp;
+%let shapeversion=AdminVector_2015_WGS84_shp;
 /* create libraries */
 libname valib "&configdir/SASApp/Data/valib";
 libname MAPSCSTM "&path/sasdata";
@@ -18,7 +19,7 @@ delete * from valib.centlookup
 where ID ? "&REGION_PREFIX"; 
 quit;
 /* import SHAPE file to SAS dataset */
-PROC MAPIMPORT 	DATAFILE="&path/shape/AD_6_BelgianLandTerritory.shp"
+PROC MAPIMPORT 	DATAFILE="&path/shape/&shapeversion/AD_6_BelgianLandTerritory.shp"
 				OUT=MAPSCSTM.BelgiumMap;
 				ID NUTSCODE;
 RUN;
