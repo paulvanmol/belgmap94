@@ -1,5 +1,6 @@
 %LET PATH = D:\workshop\belgmap;
 %LET ConfigDir=c:/sas/config/Lev1;
+options dlcreatedir; 
 /*%LET PATH = /workshop/belgmap/sascode/;*/
 /*%LET ConfigDir = /sas/config/Lev1;*/
 /*%include "&PATH.Change Length in Map Data.sas";*/
